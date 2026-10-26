@@ -1,134 +1,66 @@
-# Lula Light
+# Lula Light for Omarchy
 
-A **light** Omarchy theme in the Lula family: warm paper surfaces tinted
-rose, deep wine text, and a darkened red accent that stays readable on
-paper. The bright sibling of
-[Lula (dark)](https://github.com/PedroAugustoOK/omarchy-lula-theme).
+[![Theme checks](https://github.com/PedroAugustoOK/omarchy-lula-light-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/PedroAugustoOK/omarchy-lula-light-theme/actions/workflows/ci.yml)
 
-![Lula Light preview](preview.png)
+Warm rose paper, deep wine text and a red accent. A light theme built around `colors.toml` and Omarchy's application templates.
 
-## Palette
+![Lula Light artwork](preview.png)
 
-Every generated config — Hyprland borders, the shell (bar, menus, launcher,
-notifications, OSD, lock screen), Alacritty/Foot/Ghostty/Kitty, btop,
-Chromium, Neovim, Helix, VS Code, Obsidian, Claude/Pi/Hermes/T3Code, tmux,
-GNOME and the keyboard backlight — derives from `colors.toml` through
-Omarchy's built-in templates.
+Original minimalist wordmark artwork with the theme palette. This is theme artwork; desktop captures are still to be added.
 
-| Key | Value | Role |
-|---|---|---|
-| `mode` | `light` | paper surfaces, dark text |
-| `background` | `#F9F2F4` | warm rose paper (text 15.02:1) |
-| `foreground` | `#32161C` | deep wine ink |
-| `accent` / `red` | `#B62A3E` | one accent, wine red, 5.62:1 on paper |
-| `selection` | `#EFDADE` | rose selection |
-| `muted` | `#B79AA1` | soft borders (2.34:1, chrome only) |
-
-Panel/ANSI contrast (same calculator as `omarchy dev theme-preview`):
-every base ANSI color is ≥ 5.07:1 on the background; the `bright_*`
-siblings sit lower — `bright_magenta` is the floor at 4.13:1, and
-`dark_foreground` (chrome) is at 4.35:1, chrome-grade like the official
-light themes' weakest entries.
-
-## Wallpapers
-
-Three 2560×1440 abstract wallpapers in `backgrounds/` (cycle with
-`Super + Ctrl + Space`). The light counterpart to the dark set: soft rose
-on warm paper, no imagery, in the same quiet, blurred language as
-[Veredas](https://github.com/PedroAugustoOK/omarchy-veredas-theme).
-
-| Wallpaper | Description |
-|---|---|
-| ![01 Lula Light Blush](backgrounds/001-lula-light-blush.png) `001-lula-light-blush.png` | Morning light on warm paper, with rose in the corners |
-| ![02 Lula Light Petal](backgrounds/002-lula-light-petal.png) `002-lula-light-petal.png` | A pale rose halo, barely there |
-| ![03 Lula Light Linen](backgrounds/003-lula-light-linen.png) `003-lula-light-linen.png` | A diagonal rose wash on linen cream |
-
-PNG, 150–205 KB each. Original abstract artwork generated
-programmatically with ImageMagick; no third-party imagery. Nothing
-animated.
-
-## Installation
+## Install and use
 
 ```bash
 omarchy theme install https://github.com/PedroAugustoOK/omarchy-lula-light-theme
-```
-
-Clones to `~/.config/omarchy/themes/lula-light` and applies immediately
-(`Install > Style > Theme`).
-
-## Activation
-
-```bash
-omarchy theme list            # confirm `lula-light` is listed
 omarchy theme set lula-light
-omarchy theme current         # should print `Lula Light`
-omarchy theme bg next         # cycle the three wallpapers
+omarchy theme bg next
 ```
 
-Preview the palette without applying:
+The installer applies the theme immediately. To use the sibling variant, install
+[dark Lula](https://github.com/PedroAugustoOK/omarchy-lula-theme).
 
 ```bash
-omarchy dev theme-preview lula-light
-```
-
-## Update and removal
-
-```bash
-omarchy theme update             # pull latest for all git-installed themes
-omarchy theme refresh            # re-apply the current theme after an Omarchy upgrade
+omarchy theme update
+omarchy theme refresh
 omarchy theme remove lula-light
 ```
 
-After an `omarchy update`, run `omarchy theme refresh` once so staged
-configs are regenerated with the current templates.
+`update` updates installed themes; `refresh` reapplies the active one. Remove this
+theme after switching to another. Keyboard shortcuts can vary between Omarchy versions.
 
-To go back to the dark sibling: `omarchy theme set lula`.
+## Palette and compatibility
 
-## Lock / boot art
+The palette covers surfaces, text, selections, ANSI hues and Hyprland borders.
+Terminals, editors and the shell follow the templates provided by the installed
+Omarchy version. Requires Omarchy 4.x with the `colors.toml` theme system and
+Hyprland gradient support. Application coverage depends on that version.
 
-`unlock.png` and `preview-unlock.png` are generated from `colors.toml` by
-`scripts/make-unlock.sh`. The mark is the exact geometric twin of the dark
-sibling's: a disc sliced flat on the right, a square carrying a circular
-bite on its left and a chevron bite on its right, and a rhombus sliced
-flat on the left — three forms that interlock with gaps rather than
-overlapping. Only the palette differs: the forms are the light accent
-`#B62A3E` on paper, and the dark sibling's red glow becomes a rose bloom
-of the same opacity profile.
+[Measured palette and contrast](docs/PALETTE.md) lists the current values. Text
+roles, including muted text, meet 4.5:1 on the four opaque palette surfaces;
+ANSI hues meet 4.5:1 on the terminal background. Selected text is checked using
+both `foreground` and Omarchy's derived `bright_foreground`. These measurements
+do not certify every application, opacity setting or syntax-highlighted selection.
 
-## Optional extras (machine-local)
+## Included artwork
 
-- **Plymouth boot screen**:
-  `omarchy-plymouth-set-by-theme lula-light` (uses this theme's
-  `unlock.png` + `background`/`foreground`; asks for sudo; revert with
-  `omarchy plymouth reset`). The rendered key art
-  (`preview-unlock.png`) is 1920×1080.
+Three static wallpapers are included in `backgrounds/`. Cycle through them with
+`omarchy theme bg next`. `preview.png` is the theme-picker artwork.
 
-## Compatibility
+![Lula Light unlock illustration](preview-unlock.png)
 
-- Omarchy **4.x**, tested on `4.0.5-1` and `4.0.6-1`.
-- Ships no `.lua`, no terminal configs, no `vscode.json`, no symlinks —
-  nothing is dropped by git-theme staging.
-- Icons `Yaru-red`; keyboard backlight wine red `b62a3e` (the theme's own
-  accent, matching the built-in `keyboard.rgb.tpl`).
-- No animated `backgrounds/intros/` (the OWE wallpaper engine is optional
-  and the theme stays static).
+`unlock.png` is transparent boot/unlock artwork; `preview-unlock.png` illustrates
+it against the theme background. It is a generated illustration, not a capture
+of a running login screen. Appearance settings control activation of unlock art.
 
-## Repository structure
+## Development and credits
 
-```text
-omarchy-lula-light-theme/
-├── colors.toml          # the palette — the only required file
-├── backgrounds/         # 3 abstract 2560×1440 wallpapers
-├── icons.theme          # Yaru-red
-├── keyboard.rgb         # b62a3e
-├── preview.png          # 1800×1012 theme-picker artwork
-├── unlock.png           # transparent lock/boot art (own light-theme mark)
-├── preview-unlock.png   # 1920×1080 lock/boot styles preview
-├── scripts/             # make-preview.sh, make-unlock.sh├── README.md
-├── RESEARCH.md          # light-mode conventions + measured contrast
-└── LICENSE              # MIT
-```
+- [Development, checks and limitations](docs/DEVELOPMENT.md)
+- [Change log](CHANGELOG.md)
+- [Historical research](docs/RESEARCH.md)
 
-## License
+Theme palette and included artwork: PedroAugustoOK. Wallpapers and unlock assets
+were produced with ImageMagick; the Oráculo preview artwork was generated
+separately. Original assets are distributed under [MIT](LICENSE), alongside the
+palette and tooling. Yaru icon names refer to the separately installed Yaru icons.
 
-MIT — see [LICENSE](LICENSE).
+Built for [Omarchy](https://omarchy.org/manual/making-your-own-theme/).

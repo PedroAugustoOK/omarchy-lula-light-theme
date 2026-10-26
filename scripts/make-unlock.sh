@@ -22,6 +22,7 @@
 # same opacity profile - a soft rose bloom that keeps the artwork's character
 # without fighting the background.
 set -euo pipefail
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/palette.sh"
 
 theme_dir=${1:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}
 out_unlock=${2:-$theme_dir/unlock.png}
@@ -30,7 +31,6 @@ out_preview=${3:-$theme_dir/preview-unlock.png}
 W=1108
 H=523
 
-color() { omarchy-theme-color "$1" --file "$theme_dir/colors.toml"; }
 
 accent=$(color accent)
 background=$(color background)

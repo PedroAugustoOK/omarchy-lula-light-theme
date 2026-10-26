@@ -1,20 +1,19 @@
 # Lula Light — the bright sibling of the Lula Omarchy theme.
 # Warm paper surfaces tinted rose, deep wine text, darkened red accent.
-# All 26 canonical keys are explicit; ANSI stays readable on paper (>=4.5:1).
 
 mode = "light"
 
 accent = "#B62A3E"
 selection = "#EFDADE"
-muted = "#B79AA1"
+muted = "#6E5C61"
 
 background = "#F9F2F4"
 dark_background = "#F0E5E8"
 darker_background = "#E7D9DC"
-lighter_background = "#F3E9EC"
+lighter_background = "#FFF9FB"
 
 foreground = "#32161C"
-dark_foreground = "#8A6A71"
+dark_foreground = "#74595F"
 light_foreground = "#4B2B31"
 bright_foreground = "#32161C"
 
@@ -32,7 +31,7 @@ bright_yellow = "#876108"
 bright_green = "#2E7336"
 bright_cyan = "#0F6E75"
 bright_blue = "#2E68A5"
-bright_magenta = "#B44FA6"
+bright_magenta = "#A94A9C"
 
 # Red gradient window borders, soft rose-gray inactive borders.
 hyprland_active_border = "rgba(B62A3Eee) rgba(6B2130ee) 45deg"
